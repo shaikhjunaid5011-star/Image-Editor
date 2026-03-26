@@ -1,17 +1,15 @@
 * {
-    margin: 0%;
-    padding: 0%;
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
-
 html, body {
     width: 100%;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto;
 }
 
 html {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     background-color: var(--bg-primary-color);
     color: var(--text-primary-color);
 }
@@ -20,40 +18,43 @@ html {
     width: 100%;
 }
 
+/* SECTION LAYOUT */
 .main section {
     width: 100%;
     padding: var(--padding-2xl);
     display: flex;
     gap: var(--gutter-lg);
+    flex-wrap: wrap; /* important */
 }
 
-.main section .top{
+/* TOP BAR */
+.main section .top {
     display: flex;
     align-items: center;
     gap: var(--gutter-md);
+    flex-wrap: wrap;
 }
 
+/* BUTTONS */
 .btn {
     padding: var(--padding-sm) var(--padding-lg);
     border: none;
-    outline: none;
     border-radius: var(--border-redius-md);
     background-color: var(--bg-active-color);
     cursor: pointer;
     color: var(--text-active-color);
+    font-size: 0.9rem;
 }
 
 .reset-btn {
     background-color: var(--bg-danger-color);
-    color: var(--text-primary-color);
 }
 
 .download-btn {
     background-color: var(--bg-success-color);
-    color: var(--text-primary-color);
 }
 
-
+/* LEFT SIDE */
 .main section .left {
     display: flex;
     flex-direction: column;
@@ -62,7 +63,7 @@ html {
     align-items: center;
 }
 
-
+/* IMAGE / CANVAS BOX */
 .main section .left .bottom {
     background-color: var(--bg-secondary-color);
     width: 100%;
@@ -76,21 +77,21 @@ html {
 
 .main section .left .bottom .placeholder {
     display: flex;
-    align-items: center;
     flex-direction: column;
+    align-items: center;
     opacity: 0.6;
     gap: var(--gutter-md);
 }
 
-
 .main section .left .bottom .placeholder i {
-    font-size: 10rem;
+    font-size: clamp(3rem, 8vw, 10rem);
 }
 
 .main section .left .bottom .placeholder p {
     font-size: var(--font-size-lg);
 }
 
+/* RIGHT PANEL */
 .main section .right {
     width: 30%;
     background-color: var(--bg-secondary-color);
@@ -101,63 +102,99 @@ html {
     gap: var(--gutter-sm);
 }
 
+/* FILTER */
 .main section .right .filter {
     width: 100%;
-    gap: 20px;
-}
-.dtl-box {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
 }
 
-.main section .right .filter .name {
-    font-size: 15px;
+.dtl-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .main section .right .filter input {
     width: 100%;
-    outline: none;
     margin-top: var(--margin-sm);
     appearance: none;
 }
 
+/* SLIDER */
 .main section .right .filter input::-webkit-slider-runnable-track {
-    appearance: none;
     background-color: var(--bg-active-color);
     height: 2px;
     border-radius: 10px;
 }
 
 .main section .right .filter input::-webkit-slider-thumb {
-    appearance: none;
     cursor: pointer;
     background-color: var(--bg-danger-color);
     width: 15px;
     height: 15px;
     border-radius: 50%;
-    border: none;
-    outline: none;
     margin-top: -7px;
 }
 
-.main section .right .filters {
-    display: flex;
-    flex-direction: column;
-    gap: 1px;
-}
-
+/* CANVAS */
 canvas {
-    max-width: 90%;
-    object-fit: cover;
-    display: none;
+    max-width: 100%;
     max-height: 80vh;
-    background-color: transparent;
+    display: none;
 }
 
+/* TEXT SELECTION */
 .com-sele::selection {
     color: var(--bg-secondary-color);
     background-color: var(--bg-active-color);
 }
 
+/* ========================= */
+/* 🔥 RESPONSIVE BREAKPOINTS */
+/* ========================= */
+
+/* TABLET */
+@media (max-width: 992px) {
+    .main section {
+        flex-direction: column;
+    }
+
+    .main section .left,
+    .main section .right {
+        width: 100%;
+    }
+
+    .main section .right {
+        order: -1; /* moves it above if needed */
+    }
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+    .main section {
+        padding: var(--padding-lg);
+    }
+
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .main section .top {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .main section .left .bottom {
+        aspect-ratio: auto; /* more flexible */
+        min-height: 200px;
+    }
+
+    .main section .left .bottom .placeholder i {
+        font-size: 3rem;
+    }
+
+    .main section .left .bottom .placeholder p {
+        font-size: 0.9rem;
+        text-align: center;
+    }
+}
