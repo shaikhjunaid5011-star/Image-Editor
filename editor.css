@@ -227,3 +227,11 @@ canvas {
         min-height: 250px;
     }
 }
+
+
+.footer {
+    padding: 2vh 0vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
