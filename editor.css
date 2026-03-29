@@ -235,3 +235,18 @@ canvas {
     align-items: center;
     justify-content: space-evenly;
 }
+
+.info {
+  display: inline-block;
+  padding: 10px 25px;
+  background-color: #3498db;
+  color: white;
+  text-decoration: none; /* Underline hatane ke liye */
+  border-radius: 5px;
+  font-family: sans-serif;
+  transition: background 0.3s ease; /* Smooth hover effect */
+}
+
+.info:hover {
+  background-color: #2980b9; /* Mouse le jane par thoda dark ho jayega */
+}
